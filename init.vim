@@ -5,6 +5,7 @@ source ~/.config/nvim/autoload/plug.vim
 call plug#begin('~/.config/nvim/plugged')
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 " editor config
@@ -18,6 +19,7 @@ nnoremap <leader>p :Files<cr>
 nnoremap <Tab> :bnext<cr>
 nnoremap <S-Tab> <C-o>
 nnoremap <C-w> :bd<cr>
+nnoremap <leader>e :CocCommand explorer<CR>
 inoremap jj <ESC>
 inoremap kk <ESC>
 inoremap <C-s> <ESC>:w<cr>
