@@ -1,0 +1,20 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": ["css", "json", "ts", "tsx"],
+  "explorer.width": 30,
+  "explorer.buffer.root.template": "[icon & 1] OPEN EDITORS",
+  "explorer.file.root.template": "[icon & 1] PROJECT ([root])",
+  "explorer.file.showHiddenFiles": true,
+  "explorer.file.autoReveal": false,
+  "explorer.icon.enableNerdfont": true,
+  "explorer.previewAction.onHover": false,
+  "explorer.keyMappings": {
+    "s": "open:vsplit",
+    "mm": "rename",
+    "mc": "copyFile",
+    "C": "copyFile",
+    "md": "delete",
+    "D": "delete",
+    "ma": "addFile",
+    "mA": "addDirectory"
+  }
+}
