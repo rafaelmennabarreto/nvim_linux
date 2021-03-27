@@ -7,14 +7,12 @@
   "explorer.file.autoReveal": false,
   "explorer.icon.enableNerdfont": true,
   "explorer.previewAction.onHover": false,
-  "explorer.keyMappings": {
-    "s": "open:vsplit",
-    "mm": "rename",
-    "mc": "copyFile",
-    "C": "copyFile",
-    "md": "delete",
-    "D": "delete",
-    "ma": "addFile",
-    "mA": "addDirectory"
-  }
+  "explorer.keyMappings.global": {
+    "sv": ["wait", "open:vsplit"],
+    "rn": "rename",
+    "cp": "copyFile",
+    "rm": "delete",
+  },
+ "godot.enable": true, // states wether this extension should be enabled
+ "godot.lsp_server_port" : 6008
 }

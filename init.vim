@@ -10,7 +10,17 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'mhinz/vim-startify'
 Plug 'sheerun/vim-polyglot'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'tpope/vim-commentary'
+Plug 'phanviet/vim-monokai-pro'
+Plug 'morhetz/gruvbox'
+Plug 'tpope/vim-surround'
+Plug 'jesseleite/vim-noh'
 call plug#end()
+
+"Theme
+colorscheme gruvbox
+set background=dark
 
 " editor config
 highlight clear SignColumn
@@ -42,6 +52,13 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
+"control space open autocomplete
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
@@ -62,17 +79,19 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 
 " code action
-nmap <leader>ac <Plug>(coc-codeaction)
+nmap <leader>. <Plug>(coc-codeaction)
 	
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+
 " Keybindings
 nnoremap <C-s> :w<cr>
-nnoremap <C-q> :q<cr>
 inoremap jj <ESC>
 inoremap kk <ESC>
 nnoremap <C-w> :call CloseSplitedOrBuffer()<CR>
-nnoremap <Tab> gt
 nnoremap <Tab> :bnext<cr>
-nnoremap <S-Tab> <C-o>
+nnoremap <S-Tab> :bprev<cr>
 nnoremap <silent> <C-v> :vertical resize +10<CR>
 nnoremap <silent> <C-S-v> :vertical resize -10<CR>
 nnoremap <leader>e :CocCommand explorer --quit-on-open<CR>
@@ -83,6 +102,7 @@ nnoremap <leader>j :wincmd j<cr>
 nnoremap <leader>k :wincmd k<cr>
 nnoremap <leader>l :wincmd l<cr>
 inoremap <C-s> <ESC>:w<cr>
+inoremap <C-e> <ESC> <S-$>a
 
 " Person Function
 function CloseSplitedOrBuffer()
@@ -92,4 +112,5 @@ function CloseSplitedOrBuffer()
 	   execute ':bdelete'
 	endtry	
 endfunction
+
 
