@@ -14,6 +14,10 @@ function! s:vscodeCommentary(...) abort
     call VSCodeCallRange("editor.action.commentLine", line1, line2, 0)
 endfunction
 
+" insert mode
+inoremap jj <Esc>
+inoremap kk <Esc>
+
 " normal mode
 nmap <Tab> :tabn<CR>
 nmap <S-Tab> :tabp<CR>
