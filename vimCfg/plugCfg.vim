@@ -1,0 +1,18 @@
+ " plugins
+call plug#begin('~/.config/nvim/plugged')
+  Plug 'junegunn/fzf.vim'
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+  Plug 'mhinz/vim-startify'
+  Plug 'sheerun/vim-polyglot'
+  Plug 'editorconfig/editorconfig-vim'
+  Plug 'tpope/vim-commentary'
+  Plug 'phanviet/vim-monokai-pro'
+  Plug 'morhetz/gruvbox'
+  Plug 'tpope/vim-surround'
+  Plug 'jesseleite/vim-noh'
+call plug#end()
+
+

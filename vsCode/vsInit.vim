@@ -1,5 +1,3 @@
-set clipboard=unnamed
-
 " function
 function! s:vscodeCommentary(...) abort
     if !a:0
@@ -21,7 +19,6 @@ inoremap kk <Esc>
 " normal mode
 nmap <Tab> :tabn<CR>
 nmap <S-Tab> :tabp<CR>
-nnoremap <Space> :call VSCodeNotify('whichkey.show')<CR>
 nnoremap <C-w> :call VSCodeNotify('workbench.action.closeActiveEditor')<CR>
 nnoremap <S-k> :call VSCodeNotify('editor.action.showHover')<CR>
 nnoremap gr :call VSCodeNotify('editor.action.goToReferences')<CR>
@@ -35,8 +32,9 @@ nmap gc  <Plug>VSCodeCommentary
 omap gc  <Plug>VSCodeCommentary
 nmap gcc <Plug>VSCodeCommentaryLine
 
-" visual mode
-vnoremap <Space> :call VSCodeNotify('whichkey.show')<CR>
+" whichkey trigger
+vmap <Space> :call VSCodeNotify('whichkey.show')<CR>
+nmap <Space> :call VSCodeNotify('whichkey.show')<CR>
 
 " navigation
 nnoremap <silent> <C-j> :call VSCodeNotify('workbench.action.navigateDown')<CR>
