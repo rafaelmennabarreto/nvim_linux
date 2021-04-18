@@ -10,7 +10,8 @@ nnoremap <S-Tab> :bprev<cr>
 nnoremap <silent> <C-v> :vertical resize +10<CR>
 nnoremap <silent> <S-v> :vertical resize -10<CR>
 nnoremap <leader>e :CocCommand explorer --preset floating --quit-on-open<CR>
-nnoremap <leader>p :Files<cr>
+nnoremap <leader>p :Telescope find_files  theme=get_dropdown prompt_prefix=🔍<cr>
+nnoremap <leader>f <cmd>Telescope live_grep<cr>
 nnoremap <leader>wv :vsplit<cr>
 nnoremap <leader>h :wincmd h<cr>
 nnoremap <leader>j :wincmd j<cr>
@@ -24,6 +25,7 @@ map <C-F9> :source ~/.config/nvim/init.vim <cr>
 map <C-F12> :PlugInstall<CR>
 map <C-F11> :PlugUpdate<CR>
 map <C-F10> :PlugUpgrade<CR>
+
 
 " Person Function
 function CloseSplitedOrBuffer()
