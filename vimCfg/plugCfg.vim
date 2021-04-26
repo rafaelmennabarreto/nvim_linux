@@ -13,6 +13,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'morhetz/gruvbox'
   Plug 'tpope/vim-surround'
   Plug 'jesseleite/vim-noh'
+  Plug 'ryanoasis/vim-devicons'
   " telescope
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-lua/plenary.nvim'

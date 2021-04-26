@@ -81,4 +81,14 @@ nmap <leader>. <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
 
+" Show Diagnostics
+nmap <leader>qd :CocDiagnostics<cr>
 
+" toogle commentary
+nnoremap <leader>; :Commentary<cr>
+inoremap <leader>; :Commentary<cr>
+vnoremap <leader>; :Commentary<cr>
+
+" config search  needs ripgrep installed
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard'] "Hide files in .gitignore
+let g:ctrlp_show_hidden = 1     
