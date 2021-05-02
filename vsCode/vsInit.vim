@@ -33,8 +33,8 @@ omap gc  <Plug>VSCodeCommentary
 nmap gcc <Plug>VSCodeCommentaryLine
 
 " whichkey trigger
-vmap <Space> :call VSCodeNotify('whichkey.show')<CR>
-nmap <Space> :call VSCodeNotify('whichkey.show')<CR>
+vmap <space> :call VSCodeNotify('whichkey.show')<CR>
+nmap <space> :call VSCodeNotify('whichkey.show')<CR>
 
 " navigation
 nnoremap <silent> <C-j> :call VSCodeNotify('workbench.action.navigateDown')<CR>
