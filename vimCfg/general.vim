@@ -21,3 +21,4 @@ set smarttab
 set splitbelow
 set splitright
 set scrolloff=8
+set hidden
