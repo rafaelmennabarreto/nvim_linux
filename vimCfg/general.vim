@@ -12,7 +12,7 @@ highlight clear LineNr
 set number relativenumber
 set t_Co=256
 set nobackup
-set clipboard=unnamed
+set clipboard=unnamedplus
 set nowritebackup
 set cursorline
 set smartindent

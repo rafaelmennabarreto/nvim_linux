@@ -13,8 +13,8 @@ nnoremap <silent> <S-v> :vertical resize -10<CR>
 inoremap <C-s> <ESC>:w<cr>
 inoremap <C-e> <ESC> <S-$>a
 nnoremap <leader>e :CocCommand explorer --preset floating --quit-on-open<CR>
-nnoremap <leader>p :Telescope find_files  theme=get_dropdown prompt_prefix=🔍<cr>
-nnoremap <leader>f <cmd>Telescope live_grep<cr>
+nnoremap <leader>p :Telescope find_files prompt_prefix=🔍<cr>
+nnoremap <leader>f <cmd>Telescope live_grep theme=get_dropdown prompt_prefix=🔍<cr>
 nnoremap <leader>wv :vsplit<cr>
 nnoremap <leader>wh :split<cr>
 " window
