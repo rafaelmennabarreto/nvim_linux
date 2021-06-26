@@ -12,20 +12,22 @@ nnoremap <silent> <C-v> :vertical resize +10<CR>
 nnoremap <silent> <S-v> :vertical resize -10<CR>
 inoremap <C-s> <ESC>:w<cr>
 inoremap <C-e> <ESC> <S-$>a
-nnoremap <leader>e :CocCommand explorer --preset floating --quit-on-open<CR>
-nnoremap <leader>p :Telescope find_files prompt_prefix=🔍<cr>
-nnoremap <leader>f <cmd>Telescope live_grep theme=get_dropdown prompt_prefix=🔍<cr>
-nnoremap <leader>wv :vsplit<cr>
-nnoremap <leader>wh :split<cr>
+
+" Project
+nnoremap <leader>pt :CocCommand explorer --preset floating --quit-on-open<CR>
+nnoremap <leader>pf :Telescope find_files prompt_prefix=🔍<cr>
+
 " window
-nnoremap <leader>h :wincmd h<cr>
-nnoremap <leader>j :wincmd j<cr>
-nnoremap <leader>k :wincmd k<cr>
-nnoremap <leader>l :wincmd l<cr>
+nnoremap <leader>w/ :vsplit<cr>
+nnoremap <leader>w- :split<cr>
+nnoremap <leader>wh :wincmd h<cr>
+nnoremap <leader>wj :wincmd j<cr>
+nnoremap <leader>wk :wincmd k<cr>
+nnoremap <leader>wl :wincmd l<cr>
 
 " search keybindings [s]
 nnoremap <leader>sb :Buffers<cr>
-nnoremap <leader>sf :Files<cr>
+nnoremap <leader>sp <cmd>Telescope live_grep theme=get_dropdown prompt_prefix=🔍<cr>
 
 " vim helpers
 map <C-F9> :source ~/.config/nvim/init.vim <cr>

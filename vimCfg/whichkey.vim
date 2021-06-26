@@ -19,18 +19,8 @@ let g:which_key_map.h = 'Jump to splited left'
 let g:which_key_map.j = 'Jump to splited down'
 let g:which_key_map.k = 'Jump to splited up'
 let g:which_key_map.l = 'Jump to splited right'
-let g:which_key_map.p = 'Search File'
 
 " dictionary
-let g:which_key_map['w'] = {'name' : '+Windows' ,
-      \ 'v' :  'Split Vertical',
-      \ 'h' :  'Split Horizontal',
-      \ }
-
-let g:which_key_map['s'] = {'name' : '+Search' ,
-      \ 'b' :  'Show Buffers',
-      \ 'f' :  'Find Files',
-      \ }
 
 let g:which_key_map['q'] = {
       \ 'name' : '+Quick' ,
@@ -38,10 +28,29 @@ let g:which_key_map['q'] = {
       \ 'd' : 'Diagnostic file'
       \}
 
-let g:which_key_map.r = {
+let g:which_key_map['s'] = {'name' : '+Search' ,
+      \ 'b' :  'Show Buffers',
+      \ 'p' :  'Find text',
+      \ }
+
+let g:which_key_map['p'] = {
+      \ 'name': '+Project',
+      \ 'f' : 'find in project',
+      \}
+
+let g:which_key_map['r'] = {
       \ 'name': '+Refactor',
       \ 'n' : 'Rename'
       \}
+
+let g:which_key_map['w'] = {'name' : '+Windows' ,
+      \ '/' : 'Split Vertical',
+      \ '-' : 'Split Horizontal',
+      \ 'h' : 'jump to left window',
+      \ 'l' : 'jump to left rigth',
+      \ 'j' : 'jump to left down',
+      \ 'k' : 'jump to left up'
+      \ }
 
 " vim: set ft=vim :
 call which_key#register('<Space>', "g:which_key_map")
