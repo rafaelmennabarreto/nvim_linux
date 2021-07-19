@@ -14,7 +14,8 @@ inoremap <C-s> <ESC>:w<cr>
 inoremap <C-e> <ESC> <S-$>a
 
 " Project
-nnoremap <leader>pt :CocCommand explorer --preset floating --quit-on-open<CR>
+nnoremap <leader>pt :CocCommand explorer --position right --width 50 --quit-on-open<CR>
+nnoremap <C-b> :CocCommand explorer --position right --width 50 --quit-on-open<CR>
 nnoremap <leader>pf :Telescope find_files prompt_prefix=🔍<cr>
 
 " window
@@ -35,6 +36,16 @@ map <C-F12> :PlugInstall<CR>
 map <C-F11> :PlugUpdate<CR>
 map <C-F10> :PlugUpgrade<CR>
 
+" completion
+
+" Use <Tab> and <S-Tab> to navigate through popup menu
+imap <silent> <c-space> <Plug>(completion_trigger)
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+let g:completion_confirm_key = ""
+imap <expr> <cr>  pumvisible() ? complete_info()["selected"] != "-1" ?
+                 \ "\<Plug>(completion_confirm_completion)"  : "\<c-e>\<CR>" :  "\<CR>"
 
 " Person Function
 function CloseSplitedOrBuffer()

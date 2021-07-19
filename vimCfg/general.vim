@@ -22,3 +22,7 @@ set splitbelow
 set splitright
 set scrolloff=8
 set hidden
+set nowrap!
+set completeopt=menuone,noinsert,noselect
+
+let g:completion_confirm_key = ""
