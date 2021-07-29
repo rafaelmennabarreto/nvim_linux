@@ -9,7 +9,8 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'tpope/vim-surround'
   Plug 'jesseleite/vim-noh'
   Plug 'nvim-lua/completion-nvim'
-  
+  Plug 'preservim/nerdtree'
+
   " treesitter
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 

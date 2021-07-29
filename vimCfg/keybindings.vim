@@ -8,14 +8,13 @@ inoremap kk <ESC>
 nnoremap <C-w> :call CloseSplitedOrBuffer()<CR>
 nnoremap <Tab> :bnext<cr>
 nnoremap <S-Tab> :bprev<cr>
-nnoremap <silent> <C-v> :vertical resize +10<CR>
-nnoremap <silent> <S-v> :vertical resize -10<CR>
 inoremap <C-s> <ESC>:w<cr>
 inoremap <C-e> <ESC> <S-$>a
+nnoremap <C-d> yyp
 
 " Project
-nnoremap <leader>pt :CocCommand explorer --position right --width 50 --quit-on-open<CR>
-nnoremap <C-b> :CocCommand explorer --position right --width 50 --quit-on-open<CR>
+nnoremap <leader>pt :NERDTreeToggle<CR> 
+nnoremap <C-b> :NERDTreeToggle<CR>
 nnoremap <leader>pf :Telescope find_files prompt_prefix=🔍<cr>
 
 " window
@@ -25,6 +24,8 @@ nnoremap <leader>wh :wincmd h<cr>
 nnoremap <leader>wj :wincmd j<cr>
 nnoremap <leader>wk :wincmd k<cr>
 nnoremap <leader>wl :wincmd l<cr>
+nnoremap <silent> <C-v> :vertical resize +10<CR>
+nnoremap <silent> <S-v> :vertical resize -10<CR>
 
 " search keybindings [s]
 nnoremap <leader>sb :Buffers<cr>
@@ -37,6 +38,15 @@ map <C-F11> :PlugUpdate<CR>
 map <C-F10> :PlugUpgrade<CR>
 
 " completion
+nnoremap <C-j> <Cmd>Lspsaga diagnostic_jump_next<CR>
+nnoremap <S-k> <Cmd>Lspsaga hover_doc<CR>
+nnoremap <C-k> <Cmd>Lspsaga signature_help<CR>
+nnoremap gh <Cmd>Lspsaga diagnostic_jump_next<CR>
+nnoremap gd <Cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap gi <cmd>lua vim.lsp.buf.implementation()<CR> 
+nnoremap <leader>. <cmd>lua require('lspsaga.codeaction').code_action()<CR> 
+nnoremap <leader>d <cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
+nnoremap <leader>rn :Lspsaga rename<CR>
 
 " Use <Tab> and <S-Tab> to navigate through popup menu
 imap <silent> <c-space> <Plug>(completion_trigger)

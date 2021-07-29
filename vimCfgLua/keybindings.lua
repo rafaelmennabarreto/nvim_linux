@@ -21,7 +21,7 @@ map('n', '<Tab>', ':bnext<cr>', options)
 map('n', '<S-Tab>', ':bprev<cr>', options)
 
 -- Project
-map('n', '<leader>pt', ':CocCommand explorer --position right --width 50 --quit-on-open<CR>', options)
+map('n', '<leader>pt', ':NERDTreeToggle<CR>', options)
 map('n', '<C-b>', ':CocCommand explorer --position right --width 50 --quit-on-open<CR>', options)
 map('n', '<leader>pf', ':Telescope find_files prompt_prefix=🔍<cr>', options)
 
