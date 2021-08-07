@@ -10,6 +10,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'tpope/vim-surround'
   Plug 'jesseleite/vim-noh'
   Plug 'preservim/nerdtree'
+  Plug 'nvim-lua/completion-nvim'
 
    " themes
   Plug 'vim-airline/vim-airline'

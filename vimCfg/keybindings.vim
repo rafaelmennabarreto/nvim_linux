@@ -37,7 +37,7 @@ map <C-F10> :PlugUpgrade<CR>
 
 " completion
 nmap <silent> <C-j> <Plug>(coc-diagnostic-next) 
-nnoremap <S-k>:call <SID>show_documentation()<CR>
+nnoremap <S-k> :call CocActionAsync('doHover')<CR>
 nmap <silent> gd <Plug>(coc-definition) 
 nmap <silent> gi <Plug>(coc-implementation) 
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -70,6 +70,13 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 let g:completion_confirm_key = ""
 imap <expr> <cr>  pumvisible() ? complete_info()["selected"] != "-1" ?
                  \ "\<Plug>(completion_confirm_completion)"  : "\<c-e>\<CR>" :  "\<CR>"
+
+" control space open autocomplete
+ if has('nvim')
+   inoremap <silent><expr> <c-space> coc#refresh()
+ else
+   inoremap <silent><expr> <c-@> coc#refresh()
+ endif
 
 " autoClose
 inoremap ( ()<left>
