@@ -24,8 +24,6 @@ nnoremap <leader>wh :wincmd h<cr>
 nnoremap <leader>wj :wincmd j<cr>
 nnoremap <leader>wk :wincmd k<cr>
 nnoremap <leader>wl :wincmd l<cr>
-nnoremap <silent> <C-v> :vertical resize +10<CR>
-nnoremap <silent> <S-v> :vertical resize -10<CR>
 
 " search keybindings [s]
 nnoremap <leader>sb :Buffers<cr>
@@ -38,15 +36,31 @@ map <C-F11> :PlugUpdate<CR>
 map <C-F10> :PlugUpgrade<CR>
 
 " completion
-nnoremap <C-j> <Cmd>Lspsaga diagnostic_jump_next<CR>
-nnoremap <S-k> <Cmd>Lspsaga hover_doc<CR>
-nnoremap <C-k> <Cmd>Lspsaga signature_help<CR>
-nnoremap gh <Cmd>Lspsaga diagnostic_jump_next<CR>
-nnoremap gd <Cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap gi <cmd>lua vim.lsp.buf.implementation()<CR> 
-nnoremap <leader>. <cmd>lua require('lspsaga.codeaction').code_action()<CR> 
-nnoremap <leader>d <cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
-nnoremap <leader>rn :Lspsaga rename<CR>
+nmap <silent> <C-j> <Plug>(coc-diagnostic-next) 
+nnoremap <S-k>:call <SID>show_documentation()<CR>
+nmap <silent> gd <Plug>(coc-definition) 
+nmap <silent> gi <Plug>(coc-implementation) 
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gr <Plug>(coc-references)
+nmap <leader>. <Plug>(coc-codeaction) 
+xmap <leader>. <Plug>(coc-codeaction) 
+nmap <leader>d :<C-u>CocList diagnostics<cr> 
+nmap <leader>rn <Plug>(coc-rename) 
+
+" Highlight the symbol and its references when holding the cursor.
+" autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" toogle commentary
+nnoremap <leader>; :Commentary<cr>
+inoremap <leader>; :Commentary<cr>
+vnoremap <leader>; :Commentary<cr>
+
+"control space open autocomplete
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
 
 " Use <Tab> and <S-Tab> to navigate through popup menu
 imap <silent> <c-space> <Plug>(completion_trigger)
@@ -57,7 +71,26 @@ let g:completion_confirm_key = ""
 imap <expr> <cr>  pumvisible() ? complete_info()["selected"] != "-1" ?
                  \ "\<Plug>(completion_confirm_completion)"  : "\<c-e>\<CR>" :  "\<CR>"
 
+" autoClose
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap ' ''<left>
+inoremap " ""<left>
+inoremap ` ``<left>
+
+
 " Person Function
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
 function CloseSplitedOrBuffer()
   try
     execute ':clo'
