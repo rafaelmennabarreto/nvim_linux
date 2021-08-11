@@ -5,4 +5,5 @@ let g:coc_global_extensions = [
       \'coc-tabnine',
       \'coc-kotlin-dev',
       \'coc-json',
+      \'coc-pairs',
       \]

@@ -12,8 +12,11 @@ highlight clear LineNr
 set number relativenumber
 set t_Co=256
 set nobackup
-set clipboard=unnamedplus
 set nowritebackup
+set cmdheight=2
+set updatetime=300
+set shortmess+=c
+set clipboard=unnamedplus
 set cursorline
 set smartindent
 set autoindent

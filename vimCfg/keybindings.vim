@@ -36,7 +36,8 @@ map <C-F11> :PlugUpdate<CR>
 map <C-F10> :PlugUpgrade<CR>
 
 " completion
-nmap <silent> <C-j> <Plug>(coc-diagnostic-next) 
+nmap <silent> <C-k> <Plug>(coc-diagnostic-prev)
+nmap <silent> <C-j> <Plug>(coc-diagnostic-next)
 nnoremap <S-k> :call CocActionAsync('doHover')<CR>
 nmap <silent> gd <Plug>(coc-definition) 
 nmap <silent> gi <Plug>(coc-implementation) 
@@ -44,11 +45,11 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gr <Plug>(coc-references)
 nmap <leader>. <Plug>(coc-codeaction) 
 xmap <leader>. <Plug>(coc-codeaction) 
-nmap <leader>d :<C-u>CocList diagnostics<cr> 
+nnoremap <silent><nowait> <leader>d :<C-u>CocList diagnostics<cr> 
 nmap <leader>rn <Plug>(coc-rename) 
 
 " Highlight the symbol and its references when holding the cursor.
-" autocmd CursorHold * silent call CocActionAsync('highlight')
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " toogle commentary
 nnoremap <leader>; :Commentary<cr>
@@ -77,15 +78,6 @@ imap <expr> <cr>  pumvisible() ? complete_info()["selected"] != "-1" ?
  else
    inoremap <silent><expr> <c-@> coc#refresh()
  endif
-
-" autoClose
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap { {}<left>
-inoremap ' ''<left>
-inoremap " ""<left>
-inoremap ` ``<left>
-
 
 " Person Function
 function! s:show_documentation()
