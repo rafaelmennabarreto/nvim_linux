@@ -1,5 +1,5 @@
 " files import
-source ~/.config/nvim/autoload/plug.vim
+source ~/AppData/Local/nvim/autoload/plug.vim
 
  "Theme
 colorscheme gruvbox
@@ -23,6 +23,10 @@ set splitright
 set scrolloff=8
 set hidden
 set nowrap!
-set completeopt=menuone,noinsert,noselect
+" set completeopt=menuone,noinsert,noselect
 
+let g:deoplete#enable_at_startup = 1
 let g:completion_confirm_key = ""
+
+let g:python_host_prog='C:/Python27/python'
+let g:python3_host_prog='C:/Python39/python'

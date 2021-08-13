@@ -1,7 +1,8 @@
  " plugins
-call plug#begin('~/.config/nvim/plugged')
+call plug#begin('~/AppData/Local/nvim/plugged')
   Plug 'junegunn/fzf.vim'
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'mhinz/vim-startify'
   Plug 'sheerun/vim-polyglot'
   Plug 'editorconfig/editorconfig-vim'
@@ -10,10 +11,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'jesseleite/vim-noh'
   Plug 'nvim-lua/completion-nvim'
   Plug 'preservim/nerdtree'
-
-  " treesitter
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-
+  
   " themes
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
@@ -21,12 +19,9 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'ryanoasis/vim-devicons'
   Plug 'phanviet/vim-monokai-pro'
   Plug 'kyazdani42/nvim-web-devicons'
+  Plug 'yamatsum/nvim-nonicons'
 
-  " lsp
-  Plug 'neovim/nvim-lspconfig'
-  Plug 'glepnir/lspsaga.nvim'
-
-  " telescope
+   " telescope
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'

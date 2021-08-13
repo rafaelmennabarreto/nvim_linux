@@ -1,18 +1,31 @@
 {
   "coc.preferences.formatOnSaveFiletypes": ["*"],
-  "explorer.width": 30,
-  "explorer.buffer.root.template": "[icon & 1] OPEN EDITORS",
-  "explorer.file.root.template": "[icon & 1] PROJECT ([root])",
-  "explorer.file.showHiddenFiles": true,
-  "explorer.file.autoReveal": false,
-  "explorer.icon.enableNerdfont": true,
-  "explorer.previewAction.onHover": false,
-  "explorer.keyMappings.global": {
-    "sv": ["wait", "open:vsplit"],
-    "rn": "rename",
-    "cp": "copyFile",
-    "rm": "delete",
-  },
- "godot.enable": true, // states wether this extension should be enabled
- "godot.lsp_server_port" : 6008
+  "diagnostic.checkCurrentLine": true,
+  "suggest.completionItemKindLabels": {
+      "method": "  ",
+      "function": "  ",
+      "variable": "[]",
+      "field": "  ",
+      "typeParameter": "<>",
+      "constant": "  ",
+      "class": " פּ ",
+      "interface": " 蘒",
+      "struct": "  ",
+      "event": "  ",
+      "operator": "  ",
+      "module": "  ",
+      "property": "  ",
+      "enum": " 練",
+      "reference": "  ",
+      "keyword": "  ",
+      "file": "  ",
+      "folder": " ﱮ ",
+      "color": "  ",
+      "unit": " 塞 ",
+      "snippet": "  ",
+      "text": "  ",
+      "constructor": "  ",
+      "value": "  ",
+      "enumMember": "  "
+  }
 }

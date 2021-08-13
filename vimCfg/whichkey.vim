@@ -10,10 +10,15 @@ let g:which_key_sep = '→'
 " Not a fan of floating windows for this
 let g:which_key_use_floating_win = 0
 
-nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
-vnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
+nnoremap <silent> <leader> :<c-u>WhichKey '<Space>'<CR>
+vnoremap <silent> <leader> :<c-u>WhichKey '<Space>'<CR>
 
 " dictionary
+let g:which_key_map['j'] = 'move line down' 
+let g:which_key_map['k'] = 'move line up' 
+let g:which_key_map['.'] = 'code actions' 
+let g:which_key_map['d'] = 'code diagnostic' 
+
 let g:which_key_map['q'] = {
       \ 'name' : '+Quick' ,
       \ 'f' : 'Fix',    
@@ -21,14 +26,14 @@ let g:which_key_map['q'] = {
       \}
 
 let g:which_key_map['s'] = {'name' : '+Search' ,
-      \ 'b' :  'Show Buffers',
       \ 'p' :  'Find text',
+      \ 'f' : 'find in project',
       \ }
 
-let g:which_key_map['p'] = {
-      \ 'name': '+Project',
-      \ 'f' : 'find in project',
-      \ 't' : 'tooge explorer',
+let g:which_key_map['o'] = {
+      \ 'name': '+Open',
+      \ 't' : 'explorer',
+      \ 'b' : 'buffers',
       \}
 
 let g:which_key_map['r'] = {
