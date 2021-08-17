@@ -11,7 +11,8 @@ call plug#begin('~/AppData/Local/nvim/plugged')
   Plug 'jesseleite/vim-noh'
   Plug 'nvim-lua/completion-nvim'
   Plug 'preservim/nerdtree'
-  
+  Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+
   " themes
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
