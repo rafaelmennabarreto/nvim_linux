@@ -1,5 +1,5 @@
 " files import
-source ~/AppData/Local/nvim/autoload/plug.vim
+source ~/.config/nvim/autoload/plug.vim
 
  "Theme
 colorscheme gruvbox

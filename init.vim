@@ -1,7 +1,7 @@
-source ~/Appdata/Local/nvim/vimCfg/plugCfg.vim
-source ~/Appdata/Local/nvim/vimCfg/general.vim
-source ~/Appdata/Local/nvim/vimCfg/Nerdtree.vim
-source ~/Appdata/Local/nvim/vimCfg/airlinesCfg.vim
-source ~/Appdata/Local/nvim/vimCfg/keybindings.vim 
-source ~/Appdata/Local/nvim/vimCfg/whichkey.vim
-source ~/Appdata/Local/nvim/vimCfg/completion.rc.vim
+source ~/.config/nvim/vimCfg/plugCfg.vim
+source ~/.config/nvim/vimCfg/general.vim
+source ~/.config/nvim/vimCfg/Nerdtree.vim
+source ~/.config/nvim/vimCfg/airlinesCfg.vim
+source ~/.config/nvim/vimCfg/keybindings.vim 
+source ~/.config/nvim/vimCfg/whichkey.vim
+source ~/.config/nvim/vimCfg/completion.rc.vim
