@@ -12,10 +12,15 @@ call plug#begin('~/AppData/Local/nvim/plugged')
   Plug 'nvim-lua/completion-nvim'
   Plug 'preservim/nerdtree'
   Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 
+  " plugin for tab line
+  Plug 'akinsho/bufferline.nvim'
+  
   " themes
-  Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
+  " Plug 'vim-airline/vim-airline'
+  " Plug 'vim-airline/vim-airline-themes'
+  Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
   Plug 'morhetz/gruvbox'
   Plug 'ryanoasis/vim-devicons'
   Plug 'phanviet/vim-monokai-pro'

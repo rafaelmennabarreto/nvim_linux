@@ -24,6 +24,7 @@ set scrolloff=8
 set hidden
 set nowrap!
 set encoding=UTF-8
+set termguicolors
 " set completeopt=menuone,noinsert,noselect
 
 let g:deoplete#enable_at_startup = 1
