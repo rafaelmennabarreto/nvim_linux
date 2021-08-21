@@ -26,6 +26,7 @@ call plug#begin('~/AppData/Local/nvim/plugged')
   Plug 'phanviet/vim-monokai-pro'
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'yamatsum/nvim-nonicons'
+  Plug 'navarasu/onedark.nvim'
 
    " telescope
   Plug 'nvim-lua/popup.nvim'

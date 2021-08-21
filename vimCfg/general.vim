@@ -2,7 +2,8 @@
 source ~/.config/nvim/autoload/plug.vim
 
  "Theme
-colorscheme gruvbox
+let g:onedark_style = 'warm'
+colorscheme onedark
 set background=dark
 
 " editor config
