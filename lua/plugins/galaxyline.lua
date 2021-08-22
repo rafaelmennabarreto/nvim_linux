@@ -1,18 +1,7 @@
 local galaxyline = require('galaxyline')
-
-local colors = {
-  bg = '#282c34',
-  yellow = '#fabd2f',
-  cyan = '#008080',
-  darkblue = '#081633',
-  green = '#afd700',
-  orange = '#FF8800',
-  purple = '#5d4d7a',
-  magenta = '#d16d9e',
-  grey = '#c0c0c0',
-  blue = '#0087d7',
-  red = '#ec5f67'
-}
+local icon = require('iconStyle').slant
+local activeTheme = require('init').galaxyline.active_theme
+local color = require(string.format('themes.%s', activeTheme))
 
 -- extension Provider
 local diagnostic = require('galaxyline.provider_diagnostic')
@@ -76,28 +65,20 @@ end
 galaxyline.section.left[1] = {
   FirstElement = {
     provider = function() return '▋' end,
-    highlight = {colors.blue,colors.yellow}
+    highlight = {color.blue ,color.dark_purple}
   },
 }
 
 galaxyline.section.left[2] = {
   ViMode = {
     provider = function()
-      local alias = {n = 'NORMAL',i = 'INSERT',c= 'COMMAND',v= 'VISUAL',V= 'VISUAL LINE', [''] = 'VISUAL BLOCK'}
+      local alias = {n = ' NORMAL ',i = ' INSERT ',c= ' COMMAND ',v= ' VISUAL ',V= ' VISUAL LINE ', [''] = ' VISUAL BLOCK '}
       return alias[vim.fn.mode()]
     end,
-    separator = ' ',
-    separator_highlight = {
-      colors.purple,function()
-        if not buffer_not_empty() then
-          return colors.purple
-        end
-        return colors.darkblue
-      end
-    },
-    highlight = {colors.darkblue,colors.purple,'bold'},
+    separator = string.format("%s", icon.right),
+    separator_highlight = {color.dark_purple},
+    highlight = {color.black, color.purple,'bold'},
   },
-
 }
 
 galaxyline.section.left[3]= {
@@ -112,17 +93,17 @@ galaxyline.section.left[4] = {
   FileName = {
     provider = {'FileName','FileSize'},
     condition = buffer_not_empty,
-    separator = '',
-    separator_highlight = {colors.purple,colors.darkblue},
-    highlight = {colors.magenta,colors.darkblue}
+    separator = ' ',
+    -- separator_highlight = {color.black, color.blue},
+    -- highlight = {color.black, color.blue}
   }
 }
 
 galaxyline.section.left[5] = {
   GitIcon = {
-    provider = {function() return '  ' end},
+    provider = {function() return '' end},
     condition = GitBranch,
-    highlight = {colors.orange,colors.purple},
+    highlight = {color.orange, colors.purple},
   }
 }
 
@@ -130,7 +111,7 @@ galaxyline.section.left[6] = {
   GitBranch = {
     provider = 'GitBranch',
     condition = GitBranch,
-    highlight = {colors.grey,colors.purple},
+    -- highlight = {color.grey, color.purple},
   }
 }
 
@@ -139,7 +120,7 @@ galaxyline.section.left[7] = {
     provider = 'DiffAdd',
     condition = checkwidth,
     icon = ' ',
-    highlight = {colors.green,colors.purple},
+    highlight = {color.green, color.purple},
   }
 }
 
@@ -148,7 +129,7 @@ galaxyline.section.left[8] = {
     provider = 'DiffModified',
     condition = checkwidth,
     icon = ' ',
-    highlight = {colors.orange,colors.purple},
+    highlight = {color.orange, color.purple},
   }
 }
 
@@ -157,7 +138,7 @@ galaxyline.section.left[9] = {
     provider = 'DiffRemove',
     condition = checkwidth,
     icon = ' ',
-    highlight = {colors.red,colors.purple},
+    highlight = {color.red, color.purple},
   }
 }
 
@@ -165,8 +146,8 @@ galaxyline.section.left[10] = {
   LeftEnd = {
     provider = function() return ' ' end,
     separator = ' ',
-    separator_highlight = {colors.purple,colors.bg},
-    highlight = {colors.purple,colors.purple}
+    -- separator_highlight = {colors.purple,colors.bg},
+    -- highlight = {color.purple, color.purple}
   }
 }
 
@@ -174,7 +155,7 @@ galaxyline.section.left[11] = {
   DiagnosticError = {
     provider = 'DiagnosticError',
     icon = '  ',
-    highlight = {colors.red,colors.bg}
+    highlight = {color.red, color.bg}
   }
 }
 
@@ -188,16 +169,16 @@ galaxyline.section.left[13] = {
   DiagnosticWarn = {
     provider = 'DiagnosticWarn',
     icon = '  ',
-    highlight = {colors.blue,colors.bg},
+    highlight = {color.blue, color.bg},
   }
 }
 
 galaxyline.section.right[1]= {
   FileFormat = {
     provider = 'FileFormat',
-    separator = ' ',
-    separator_highlight = {colors.bg,colors.purple},
-    highlight = {colors.grey,colors.purple},
+    separator = string.format('%s' , icon.right),
+    separator_highlight = {color.black, color.purple},
+    highlight = {color.black, color.purple, 'bold'},
   }
 }
 
@@ -205,8 +186,8 @@ galaxyline.section.right[2] = {
   LineInfo = {
     provider = 'LineColumn',
     separator = ' | ',
-    separator_highlight = {colors.darkblue,colors.purple},
-    highlight = {colors.grey,colors.purple},
+    separator_highlight = {colors.black, colors.purple},
+    highlight = {color.black, color.purple},
   },
 }
 
@@ -214,15 +195,15 @@ galaxyline.section.right[3] = {
   PerCent = {
     provider = 'LinePercent',
     separator = ' ',
-    separator_highlight = {colors.darkblue,colors.purple},
-    highlight = {colors.grey,colors.darkblue},
+    separator_highlight = {color.dark_purple, color.purple},
+    highlight = {color.grey, color.dark_purple},
   }
 }
 
 galaxyline.section.right[4] = {
   ScrollBar = {
     provider = 'ScrollBar',
-    highlight = {colors.yellow,colors.purple},
+    highlight = {color.yellow, color.purple},
   }
 }
 
@@ -231,7 +212,7 @@ galaxyline.section.short_line_left[1] = {
     provider = 'FileTypeName',
     separator = ' ',
     separator_highlight = {colors.purple,colors.bg},
-    highlight = {colors.grey,colors.purple}
+    highlight = {color.grey, color.purple}
   }
 }
 
@@ -239,7 +220,7 @@ galaxyline.section.short_line_right[1] = {
   BufferIcon = {
     provider= 'BufferIcon',
     separator = ' ',
-    separator_highlight = {colors.purple,colors.bg},
-    highlight = {colors.grey,colors.purple}
+    separator_highlight = {color.purple,color.bg},
+    highlight = {color.grey,color.purple}
   }
 }
