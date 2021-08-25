@@ -48,6 +48,6 @@ end)
 -- import modules
 require('plugins.bufferLine')
 require('plugins.statusline')
-require('plugin.Coc')
+require('plugins.Coc')
 
 return startup

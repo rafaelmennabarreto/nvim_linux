@@ -7,6 +7,7 @@ function map(mode, key, command, opt)
 end
 
 local opt = {silent = true}
+local optNoremapExpr = {silent = true, noremap = true, expr = true}
 
 map('n', '<C-w>' , ':bd<cr>', opt)
 map('n', '<C-s>' , ':w<cr>', opt)
@@ -56,6 +57,39 @@ map('n','<Leader>k', ':m .-2<CR>==',opt)
 -- map <C-F10> :PlugUpgrade<CR>
 
 -- " completion
+map('n','K', 'v:lua.show_documentation()', optNoremapExpr)
+map('n','gh', '<Plug>(coc-diagnostic-next)',opt)
+map('n','gd', '<Plug>(coc-definition)',opt)
+map('n','gi', '<Plug>(coc-implementation)',opt)
+map('n','ge', '<Plug>(coc-references)',opt)
+map('n','<Leader>.', '<Plug>(coc-codeaction)',opt)
+map('n','<Leader>k', ':<C-u>CocList diagnostics<cr>',opt)
+map('n','<Leader>rn', '<Plug>(coc-rename)',opt)
+map('i','<Tab>', 'v:lua.smart_tab()', optNoremapExpr)
+
+local t = function(str)
+  return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
+
+_G.smart_tab = function()
+  if vim.fn.pumvisible() == 1 then
+    return t'<C-n>'
+  else
+    return t'<Tab>'
+  end
+end
+
+function show_documentation()
+   local filetype = vim.bo.filetype
+
+   if filetype == 'vim'  or filetype == 'help' then
+        vim.api.nvim_command('h ' .. filetype)
+
+   elseif vim.call('coc#rpc#ready') then
+        vim.fn.CocActionAsync('doHover')
+   end
+end
+
 -- nnoremap <S-k> :call <SID>show_documentation()<CR>
 -- nmap gh <Plug>(coc-diagnostic-next)
 -- nmap gd <Plug>(coc-definition)
