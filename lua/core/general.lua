@@ -1,7 +1,10 @@
 vim.o.termguicolors = true
 vim.o.background = "dark"
 
-vim.g.AutoClosePumvisible = {
+local g = vim.g
+
+g.completion_confirm_key = ""
+g.AutoClosePumvisible = {
     ENTER = "<c-y>",
     ESC = "<esc>"
 }
@@ -32,7 +35,8 @@ vim.cmd [[
     set termguicolors
     set noshowmode
     set completeopt=menuone,noselect
-
-    let g:completion_confirm_key = ""
+    set tabstop=4
+    set shiftwidth=4
+    set expandtab 
 ]]
 
