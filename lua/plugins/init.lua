@@ -39,11 +39,16 @@ local startup = require('packer').startup(function()
       requires = 'kyazdani42/nvim-web-devicons'
   }
 
+  -- vsnip
+  use 'hrsh7th/vim-vsnip'
+  use 'hrsh7th/vim-vsnip-integ'
+
 end)
 
 require('plugins.bufferLine')
 require('plugins.statusline')
 require('plugins.Lsp')
 require('plugins.compe')
+require('lua.plugins.dashboard')
 
 return startup

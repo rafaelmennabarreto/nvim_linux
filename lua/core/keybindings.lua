@@ -38,10 +38,6 @@ map('n', '<C-l>', ':vertical resize -10<CR>', opt)
 map('n', '<leader>sp', '<cmd>Telescope live_grep theme=get_dropdown prompt_prefix=🔍<cr>', opt)
 map('n', '<leader>sf', ':Telescope find_files prompt_prefix=🔍<cr>', opt)
 
--- Tab navigate completion
--- map('i','<expr> <Tab>', 'pumvisible() ? "\<C-n>" : "\<Tab>"',opt)
--- map('i','<expr> <S-Tab>', 'pumvisible() ? "\<C-p>" : "\<S-Tab>"',opt)
-
 -- " move line
 map('v','J', ":m '>+1<CR>gv=gv",opt)
 map('v','K', ":m '<-2<CR>gv=gv",opt)
@@ -50,7 +46,19 @@ map('i','<C-k>', '<esc>:m .-2<CR>==',opt)
 map('n','<Leader>j', ':m .+1<CR>==',opt)
 map('n','<Leader>k', ':m .-2<CR>==',opt)
 
--- tab move completion
+-- Completion
+map('i','<C-Space>', 'compe#complete()', { expr = true, noremap = true, silent = true, })
+map('i','<CR>', "compe#confirm({ 'keys': '<CR>', 'select': v:true })", { expr = true, noremap = true, silent = true, })
+map('i','<C-e>', "compe#close('<C-e>')", { expr = true, noremap = true, silent = true, })
+map('i','<C-d>', 'compe#scroll({ "delta": -4 })', { expr = true, noremap = true, silent = true, })
+map('i','<C-f>', "compe#scroll({ 'delta': +4 })", { expr = true, noremap = true, silent = true, })
+
+map("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
+map("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
+map("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+map("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+
+-- tab move completion functions
 local t = function(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
@@ -71,6 +79,7 @@ _G.tab_complete = function()
     return vim.fn['compe#complete']()
   end
 end
+
 _G.s_tab_complete = function()
   if vim.fn.pumvisible() == 1 then
     return t "<C-p>"
@@ -82,43 +91,3 @@ _G.s_tab_complete = function()
   end
 end
 
--- Completion
-map('i','<C-Space>', 'compe#complete()', { expr = true, noremap = true, silent = true, })
-map('i','<CR>', "compe#confirm({ 'keys': '<CR>', 'select': v:true })", { expr = true, noremap = true, silent = true, })
-map('i','<C-e>', "compe#close('<C-e>')", { expr = true, noremap = true, silent = true, })
-map('i','<C-d>', 'compe#scroll({ "delta": -4 })', { expr = true, noremap = true, silent = true, })
-map('i','<C-f>', "compe#scroll({ 'delta': +4 })", { expr = true, noremap = true, silent = true, })
-
-map("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
-map("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
-map("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-map("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-
--- inoremap <silent><expr> <C-Space> compe#complete()
--- inoremap <silent><expr> <CR>      compe#confirm('<CR>')
--- inoremap <silent><expr> <C-e>     compe#close('<C-e>')
--- inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
--- inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
-
--- " vim helpers
--- map <C-F9> :source ~/.config/nvim/init.vim <cr>
--- map <C-F12> :PlugInstall<CR>
--- map <C-F11> :PlugUpdate<CR>
--- map <C-F10> :PlugUpgrade<CR>
-
--- " completion
--- nnoremap <S-k> :call <SID>show_documentation()<CR>
--- nmap gh <Plug>(coc-diagnostic-next)
--- nmap gd <Plug>(coc-definition)
--- nmap gi <Plug>(coc-implementation) 
--- nmap gr <Plug>(coc-references)
--- nmap <leader>. <Plug>(coc-codeaction)
--- nmap <leader>d :<C-u>CocList diagnostics<cr>
--- nmap <leader>rn <Plug>(coc-rename)
---
--- imap <expr> <cr>  pumvisible() ? complete_info()["selected"] != "-1" ?
---                  \ "\<Plug>(completion_confirm_completion)"  : "\<c-e>\<CR>" :  "\<CR>"
-
--- " config search  needs ripgrep installed
--- let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard'] "Hide files in .gitignore
--- let g:ctrlp_show_hidden = 1
