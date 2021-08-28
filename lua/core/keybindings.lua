@@ -7,6 +7,7 @@ function map(mode, key, command, opt)
 end
 
 local opt = {silent = true}
+local optNoremap = { silent = true, noremap = true }
 
 map('n', '<C-w>' , ':bd<cr>', opt)
 map('n', '<C-s>' , ':w<cr>', opt)
@@ -49,6 +50,56 @@ map('i','<C-k>', '<esc>:m .-2<CR>==',opt)
 map('n','<Leader>j', ':m .+1<CR>==',opt)
 map('n','<Leader>k', ':m .-2<CR>==',opt)
 
+-- tab move completion
+local t = function(str)
+  return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
+
+local check_back_space = function()
+    local col = vim.fn.col('.') - 1
+    return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
+end
+
+_G.tab_complete = function()
+  if vim.fn.pumvisible() == 1 then
+    return t "<C-n>"
+  elseif vim.fn['vsnip#available'](1) == 1 then
+    return t "<Plug>(vsnip-expand-or-jump)"
+  elseif check_back_space() then
+    return t "<Tab>"
+  else
+    return vim.fn['compe#complete']()
+  end
+end
+_G.s_tab_complete = function()
+  if vim.fn.pumvisible() == 1 then
+    return t "<C-p>"
+  elseif vim.fn['vsnip#jumpable'](-1) == 1 then
+    return t "<Plug>(vsnip-jump-prev)"
+  else
+    -- If <S-Tab> is not working in your terminal, change it to <C-h>
+    return t "<S-Tab>"
+  end
+end
+
+-- Completion
+map('i','<C-Space>', 'compe#complete()', { expr = true, noremap = true, silent = true, })
+map('i','<CR>', "compe#confirm({ 'keys': '<CR>', 'select': v:true })", { expr = true, noremap = true, silent = true, })
+map('i','<C-e>', "compe#close('<C-e>')", { expr = true, noremap = true, silent = true, })
+map('i','<C-d>', 'compe#scroll({ "delta": -4 })', { expr = true, noremap = true, silent = true, })
+map('i','<C-f>', "compe#scroll({ 'delta': +4 })", { expr = true, noremap = true, silent = true, })
+
+map("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
+map("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
+map("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+map("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+
+-- inoremap <silent><expr> <C-Space> compe#complete()
+-- inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+-- inoremap <silent><expr> <C-e>     compe#close('<C-e>')
+-- inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
+-- inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
+
 -- " vim helpers
 -- map <C-F9> :source ~/.config/nvim/init.vim <cr>
 -- map <C-F12> :PlugInstall<CR>
@@ -71,11 +122,3 @@ map('n','<Leader>k', ':m .-2<CR>==',opt)
 -- " config search  needs ripgrep installed
 -- let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard'] "Hide files in .gitignore
 -- let g:ctrlp_show_hidden = 1
-
--- " move line
--- vnoremap J :m '>+1<CR>gv=gv
--- vnoremap K :m '<-2<CR>gv=gv
--- inoremap <C-j> <esc>:m .+1<CR>==
--- inoremap <C-k> <esc>:m .-2<CR>==
--- nnoremap <leader>k :m .-2<CR>==
--- nnoremap <leader>j :m .+1<CR>==

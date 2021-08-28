@@ -1,5 +1,11 @@
 vim.o.termguicolors = true
 vim.o.background = "dark"
+
+vim.g.AutoClosePumvisible = {
+    ENTER = "<c-y>",
+    ESC = "<esc>"
+}
+
 vim.cmd [[
     let g:onedark_style = 'warm'
     colorscheme onedark
@@ -25,6 +31,8 @@ vim.cmd [[
     set encoding=UTF-8
     set termguicolors
     set noshowmode
+    set completeopt=menuone,noselect
 
     let g:completion_confirm_key = ""
 ]]
+
